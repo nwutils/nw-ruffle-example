@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NW.js Ruffle Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css" media="screen">
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+    .flash-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="flash-content"></div>
+    <script>
+      // Settings
+      // https://github.com/ruffle-rs/ruffle/wiki/Using-Ruffle#configuration-options
+      window.RufflePlayer = {
+        config: {
+          // Must be longform hex value
+          backgroundColor: '#000044',
+          showLoadingBar: false,
+          showRuffleLogo: false,
+          showSpinner: false,
+          SWF: 'file.swf'
+        }
+      };
+
+      function initialize () {
+        document.body.style.background = window.RufflePlayer.config.backgroundColor;
+        window.addEventListener('DOMContentLoaded', () => {
+          const container = document.querySelector('.flash-content');
+          const ruffle = window.RufflePlayer.newest();
+          const player = ruffle.createPlayer();
+          container.appendChild(player);
+          player.ruffle().load(window.RufflePlayer.config.SWF);
+          const rufflePlayer = document.querySelector('ruffle-player');
+
+          const splashBackground = '--splash-screen-background: ' + window.RufflePlayer.config.backgroundColor;
+          if (window.RufflePlayer.config.showRuffleLogo) {
+            rufflePlayer.setAttribute('style', splashBackground);
+          } else {
+            rufflePlayer.setAttribute('style', '--logo-display: none;' + splashBackground);
+          }
+
+          if (!window.RufflePlayer.config.showLoadingBar) {
+            rufflePlayer.shadowRoot.querySelector('.loadbar')
+              .setAttribute('style', 'display: none');
+          }
+          if (!window.RufflePlayer.config.showSpinner) {
+            rufflePlayer.shadowRoot.querySelector('.loading-animation')
+              .setAttribute('style', 'display: none');
+          }
+        });
+      }
+
+      initialize();
+    </script>
+    <script src="node_modules/@ruffle-rs/ruffle/ruffle.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "nw-ruffle-example",
+  "main": "index.html",
+  "scripts": {
+    "start": "nw .",
+    "postinstall": "npx base-volta-off-of-nwjs@latest"
+  },
+  "dependencies": {
+    "@ruffle-rs/ruffle": "0.2.0-nightly.2025.12.27"
+  },
+  "devDependencies": {
+    "nw": "0.106.1-sdk"
+  },
+  "volta": {
+    "node": "25.2.1"
+  }
+}
