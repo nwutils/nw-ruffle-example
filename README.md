@@ -8,6 +8,13 @@ Use Ruffle to display SWF files in NW.js
 1. `npm start`
 
 
+Updating Ruffle:
+
+1. Run `npm i --save @ruffle-rs/ruffle@latest`
+1. This will update the version in the `package.json`
+1. If the version is greater than `0.x.x` (such as `1.0.0`, `2.0.0`, etc), then consult documentation for API changes.
+
+
 * * *
 
 

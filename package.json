@@ -6,7 +6,7 @@
     "postinstall": "npx base-volta-off-of-nwjs@latest"
   },
   "dependencies": {
-    "@ruffle-rs/ruffle": "0.2.0-nightly.2025.12.27"
+    "@ruffle-rs/ruffle": "^0.2.0-nightly.2025.12.28"
   },
   "devDependencies": {
     "nw": "0.106.1-sdk"
